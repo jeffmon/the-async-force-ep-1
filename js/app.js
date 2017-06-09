@@ -64,9 +64,11 @@
       filmContainer.className = "film";
       targetFilmList.appendChild(filmContainer);
       var filmTitle = document.createElement("h2");
+      filmTitle.className = "filmTitle";
       filmTitle.innerHTML = response.results[i].title;
       filmContainer.appendChild(filmTitle);
       var planetHeading = document.createElement("h3");
+      planetHeading.innerHTML = "Planets";
       filmContainer.appendChild(planetHeading);
 
       var filmPlanetsContainer = document.createElement("ul");
