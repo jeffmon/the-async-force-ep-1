@@ -1,6 +1,5 @@
 (function (){
 
-
   var targetPerson4Name = document.getElementById("person4Name");
   var targetPerson4HomeWorld = document.getElementById("person4HomeWorld");
   var targetPerson14Name = document.getElementById("person14Name");
@@ -21,11 +20,9 @@
 
   function reqListener2(){
     var response = JSON.parse(this.responseText);
-    if(response.name === "Tatooine"){
-      var vaderHomeWorld = document.createElement("div");
-      vaderHomeWorld.innerHTML = response.name;
-      targetPerson4HomeWorld.appendChild(vaderHomeWorld);
-    }
+    var vaderHomeWorld = document.createElement("div");
+    vaderHomeWorld.innerHTML = response.name;
+    targetPerson4HomeWorld.appendChild(vaderHomeWorld);
   }
 
   function reqListener3(){
@@ -56,10 +53,37 @@
     oReq.send();
   }
 
+  function getFilms(){
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener4);
+    oReq.open("GET", "http://swapi.co/api/films/");
+    oReq.send();
+  }
+
   getPerson(4);
   getPlanet(1);
   getPerson(14);
   getSpecies(1);
+
+  var targetFilmList = document.getElementById("filmList");
+
+  function reqListener4(){
+    var response = JSON.parse(this.responseText);
+
+    console.log(response.results[0].title);
+
+    for(var i = 0; i < response.results.length; i++){
+      var filmListTitles = document.createElement("li");
+      filmListTitles.innerHTML = response.results[i].title;
+      targetFilmList.appendChild(filmListTitles);
+    }
+
+    /*var filmListTitles = document.createElement("li");
+    filmListTitles.innerHTML = response.title;
+    targetFilmList.appendChild(filmListTitles);*/
+  }
+
+  getFilms();
 
 
 
