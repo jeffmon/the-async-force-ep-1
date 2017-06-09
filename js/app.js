@@ -1,10 +1,5 @@
 (function (){
 
-  var targetPerson4Name = document.getElementById("person4Name");
-  var targetPerson4HomeWorld = document.getElementById("person4HomeWorld");
-  var targetPerson14Name = document.getElementById("person14Name");
-  var targetPerson14Species = document.getElementById("person14Species");
-
   function getPerson(id){
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function(){
@@ -12,11 +7,11 @@
       if(response.name === "Darth Vader"){
         var vaderName = document.createElement("div");
         vaderName.innerHTML = response.name;
-        targetPerson4Name.appendChild(vaderName);
+        person4Name.appendChild(vaderName);
       } else if(response.name === "Han Solo"){
         var soloName = document.createElement("div");
         soloName.innerHTML = response.name;
-        targetPerson14Name.appendChild(soloName);
+        person14Name.appendChild(soloName);
       }
     });
     oReq.open("GET", "http://www.swapi.co/api/people/" + id);
@@ -29,7 +24,7 @@
       var response = JSON.parse(this.responseText);
       var vaderHomeWorld = document.createElement("div");
       vaderHomeWorld.innerHTML = response.name;
-      targetPerson4HomeWorld.appendChild(vaderHomeWorld);
+      person4HomeWorld.appendChild(vaderHomeWorld);
     });
     oReq.open("GET", "http://www.swapi.co/api/planets/" + id);
     oReq.send();
@@ -41,7 +36,7 @@
       var response = JSON.parse(this.responseText);
       var soloSpecies = document.createElement("div");
       soloSpecies.innerHTML = response.name;
-      targetPerson14Species.appendChild(soloSpecies);
+      person14Species.appendChild(soloSpecies);
     });
     oReq.open("GET", "http://www.swapi.co/api/species/" + id);
     oReq.send();
