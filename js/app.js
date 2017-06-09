@@ -73,14 +73,14 @@
     console.log(response.results[0].title);
 
     for(var i = 0; i < response.results.length; i++){
-      var filmListTitles = document.createElement("li");
-      filmListTitles.innerHTML = response.results[i].title;
-      targetFilmList.appendChild(filmListTitles);
+      var film = document.createElement("li");
+      film.className = "film";
+      targetFilmList.appendChild(film);
+      var filmTitle = document.createElement("h2");
+      filmTitle.innerHTML = response.results[i].title;
+      film.appendChild(filmTitle);
     }
 
-    /*var filmListTitles = document.createElement("li");
-    filmListTitles.innerHTML = response.title;
-    targetFilmList.appendChild(filmListTitles);*/
   }
 
   getFilms();
